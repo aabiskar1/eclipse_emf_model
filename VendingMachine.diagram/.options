@@ -1,0 +1,7 @@
+# Tracing options for the VendingMachine.diagram plug-in
+
+# Common issues
+VendingMachine.diagram/debug=false
+
+# Visual IDs
+VendingMachine.diagram/debug/visualID=false

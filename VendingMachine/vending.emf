@@ -1,0 +1,72 @@
+@namespace(uri="Y3901924" , prefix = "")
+package vendingMachine;
+
+
+//all the state of the machine like idel,prepration,selection
+@gmf.node(label="text", label.icon="false",color="107,114,110")
+class State extends Event{
+
+
+}
+
+
+//shows status and message
+@gmf.node(color="17,238,105")
+class Message extends Event{
+
+	attr String status;
+}
+
+//user input buttons
+@gmf.node(color="105,218,203")
+class Button extends Event{
+	
+	
+}
+
+//sensor to know when the coins are inserted,cup are full or to detect malfunction
+class Sensor{
+	attr String name;
+	attr String data;
+}
+
+
+//this is an input so it extends to event
+class UserCoin extends Event{
+	attr int coin;
+	
+}
+
+
+//preprating drinks, draw water,pour coffee, 
+@gmf.node(label="text", label.icon="false",color="241,212,163")
+abstract class Event{
+	attr String name;
+	attr String text;
+	ref Transition[*]#to incoming;
+	ref Transition[*]#from outgoing;
+
+}
+
+@gmf.link(source="from", target="to", label="text", target.decoration="arrow")
+class Transition {
+	attr String text;
+	ref Event#outgoing from;
+	ref Event#incoming to;
+}
+//main controller class
+@gmf.diagram
+class VendingMachine{
+	val Sensor[*] sensors;
+	val Event[*] events;
+	val Transition[*] transitions;
+	val Message[*] messages;
+	val State[*] states;
+	val Button[*] buttons;
+	attr String name;
+	
+}
+
+
+
+
